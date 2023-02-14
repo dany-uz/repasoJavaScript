@@ -1,0 +1,21 @@
+{
+  "name": "repasojavascript",
+  "version": "1.0.0",
+  "description": "Repaso de funciones",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "funcion",
+    "tradicional",
+    "flecha",
+    "arreglos",
+    "objetos"
+  ],
+  "author": "dany-uz",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.6.2"
+  }
+}
