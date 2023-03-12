@@ -1,5 +1,17 @@
-// Formula que vamos a usar: d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+/*
 
+1.PROBLEMA: Yoda el maestro jedi, necesita enseñar a sus aprendices 
+Padawan a calcular la distancia a la que cualquiera de los planetas de la 
+ruta N-14 pertenecientes a la ruta comercial de la federación 
+intergaláctica, se encuentra del planeta NABOO. 
+Para calcular dicha distancia se debe:
+• Recibir las coordenadas X,Y del planeta en UA
+• Establecer la distancia como:
+√(𝑥2 − 𝑥1)^2 + (𝑦2 − 𝑦1)^2
+
+*/
+
+// Formula que vamos a usar: d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
 
 function calcularDistancia(x1, y1, x2, y2) {
     // ---------------- Forma 1 ---------------- //
