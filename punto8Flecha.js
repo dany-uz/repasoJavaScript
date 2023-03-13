@@ -15,33 +15,33 @@ información general de este
 
 */
 
-const getRandomNumber = (min, max) => {
+const obtenerNumeroAleatorio = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const generateRandomPlanets = (n) => {
+const generarPlanetasAleatorios = (n) => {
     const planets = [];
     for (let i = 0; i < n; i++) {
         const planet = {
             nombrePlaneta: `Planeta ${i + 1}`,
-            latitud: getRandomNumber(-90, 90),
-            longitud: getRandomNumber(-180, 180),
-            nivelOxigeno: getRandomNumber(-50, 100),
-            volumenAgua: getRandomNumber(0, 1000),
+            latitud: obtenerNumeroAleatorio(-90, 90),
+            longitud: obtenerNumeroAleatorio(-180, 180),
+            nivelOxigeno: obtenerNumeroAleatorio(-50, 100),
+            volumenAgua: obtenerNumeroAleatorio(0, 1000),
         };
         planets.push(planet);
     }
     return planets;
 };
 
-const sumTotalWater = (planets) => {
+const sumaTotalDelAgua = (planets) => {
     const totalWater = planets.reduce((accumulator, planet) => {
         return accumulator + planet.volumenAgua;
     }, 0);
     console.log(`La cantidad total de agua de los planetas es: ${totalWater}`);
 };
 
-const sumAndMultiplyTotalOxygen = (planets) => {
+const totalOxigeno = (planets) => {
     const totalOxygen = planets.reduce((accumulator, planet) => {
         return accumulator + planet.nivelOxigeno;
     }, 0);
@@ -49,7 +49,7 @@ const sumAndMultiplyTotalOxygen = (planets) => {
     console.log(`El total de oxígeno de los planetas multiplicado por 100 es: ${result}`);
 };
 
-const findPlanetWithNegativeOxygen = (planets) => {
+const planetaOxigenoNegativo = (planets) => {
     const planet = planets.find((planet) => planet.nivelOxigeno < 0);
     if (planet) {
         console.log(`El planeta ${planet.nombrePlaneta} tiene nivel de oxígeno negativo`);
@@ -59,7 +59,7 @@ const findPlanetWithNegativeOxygen = (planets) => {
     }
 };
 
-const findPlanetWithoutWater = (planets) => {
+const planetaSinAgua = (planets) => {
     const planet = planets.find((planet) => planet.volumenAgua === 0);
     if (planet) {
         console.log(`El planeta ${planet.nombrePlaneta} no tiene agua`);
@@ -69,9 +69,9 @@ const findPlanetWithoutWater = (planets) => {
     }
 };
 
-const planets = generateRandomPlanets(15);
+const planets = generarPlanetasAleatorios(15);
 
-sumTotalWater(planets);
-sumAndMultiplyTotalOxygen(planets);
-findPlanetWithNegativeOxygen(planets);
-findPlanetWithoutWater(planets);
+sumaTotalDelAgua(planets);
+totalOxigeno(planets);
+planetaOxigenoNegativo(planets);
+planetaSinAgua(planets);
