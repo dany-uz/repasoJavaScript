@@ -8,17 +8,19 @@ calcule e imprima el salario mensual de un vendedor dado;
 
 */
 
-function calcularSalario(licenciasVendidas) {
+const calcularSalarioMensualLicenciasVendidas = licenciasVendidas => {
     const salarioBase = 3500000;
     const comisionPorLicencia = 1500000;
-    const porcentajeDeducciones = 0.05;
-    const totalComision = comisionPorLicencia * licenciasVendidas;
-    const totalDevengado = salarioBase + totalComision;
-    const deducciones = totalDevengado * porcentajeDeducciones;
-    const salarioMensual = totalDevengado - deducciones;
-    return salarioMensual;
+    const deducciones = 0.05;
+
+    const totalComision = licenciasVendidas * comisionPorLicencia;
+    const salarioBruto = salarioBase + totalComision;
+    const impuestos = salarioBruto * deducciones;
+    const salarioNeto = salarioBruto - impuestos;
+
+    return salarioNeto;
 }
 
-const licenciasVendidas = 5;
-const salarioMensual = calcularSalario(licenciasVendidas);
-console.log("El salario mensual del vendedor es: " + salarioMensual);
+const licenciasVendidas = 3;
+const salarioMensual = calcularSalarioMensualLicenciasVendidas(licenciasVendidas);
+console.log(`El salario mensual del vendedor es ${salarioMensual} COP.`);

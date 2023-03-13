@@ -10,30 +10,33 @@ repeticiones
 */
 
 function clasificarEdades() {
-    const edades = [];
-    const codigos = [];
-    const numEdades = 20;
+    var edades = [];
+    var codigos = [];
 
-    for (let i = 0; i < numEdades; i++) {
-        edades.push(Math.floor(Math.random() * 100));
-        codigos.push(Math.floor(Math.random() * 20) + 1);
+    for (var i = 0; i < 20; i++) {
+        var edad = Math.floor(Math.random() * 100) + 1;
+        edades.push(edad);
+
+        var codigo = Math.floor(Math.random() * 20) + 1;
+        codigos.push(codigo);
     }
 
-    let mayorEdad = edades[0];
-    let numRepeticiones = 1;
+    var edadMayor = edades[0];
+    var repeticiones = 0;
 
-    for (let i = 1; i < numEdades; i++) {
-        if (edades[i] > mayorEdad) {
-            mayorEdad = edades[i];
-            numRepeticiones = 1;
-        } else if (edades[i] === mayorEdad) {
-            numRepeticiones++;
+    for (var i = 1; i < edades.length; i++) {
+        if (edades[i] > edadMayor) {
+            edadMayor = edades[i];
+            repeticiones = 0;
+        }
+
+        if (edades[i] === edadMayor) {
+            repeticiones++;
         }
     }
 
-    console.log(`La edad mayor es ${mayorEdad} y se repite ${numRepeticiones} veces.`);
-    console.log("Edades: " + edades);
-    console.log("Códigos: " + codigos);
+    console.log("Las edades generadas aleatoriamente son: " + edades);
+    console.log("La edad mayor es " + edadMayor + " y se repite " + repeticiones + " veces.");
 }
 
 clasificarEdades();

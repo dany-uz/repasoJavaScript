@@ -1,6 +1,6 @@
 /*
 
-PROBLEMA: Para descubrir la ubicación de un listado con los 
+8. PROBLEMA: Para descubrir la ubicación de un listado con los 
 últimos guerreros jedi de la galaxia se debe recibir un listado de 
 15 mapas los cuales tienen la siguiente información
 {nombrePlaneta, latitud, longitud, nivel de oxígeno en el 

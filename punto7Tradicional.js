@@ -18,11 +18,11 @@ function encontrarMasCercanoACero() {
 
     var masCercanoACero = numeros[0];
 
-    for (var j = 0; j < numeros.length; j++) {
-        if (Math.abs(numeros[j]) < Math.abs(masCercanoACero)) {
-            masCercanoACero = numeros[j];
+    numeros.forEach(function (numero) {
+        if (Math.abs(numero) < Math.abs(masCercanoACero)) {
+            masCercanoACero = numero;
         }
-    }
+    });
 
     console.log("El número más cercano a cero es " + masCercanoACero + ".");
     console.log("Números: " + numeros);

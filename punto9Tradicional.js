@@ -19,20 +19,18 @@ function crearPadawan(nombre, planeta, edad, estatura) {
     edad: edad,
     estatura: estatura
   };
-}
+};
 
 function clasificarActividad(padawan) {
   if (padawan.edad < 15) {
-    console.log(`${padawan.nombre} del planeta ${padawan.planeta} manejará la fuerza.`);
+    console.log(padawan.nombre + ' debe practicar el manejo de la fuerza');
   } else {
-    console.log(`${padawan.nombre} del planeta ${padawan.planeta} manejará el sable de luz.`);
+    console.log(padawan.nombre + ' debe practicar el manejo del sable de luz');
   }
-}
+};
 
-const padawan1 = crearPadawan('Anakin Skywalker', 'Tatooine', 9, 1.88);
-const padawan2 = crearPadawan('Ahsoka Tano', 'Shili', 14, 1.62);
-const padawan3 = crearPadawan('Luke Skywalker', 'Tatooine', 19, 1.72);
+const padawan1 = crearPadawan('Luke Skywalker', 'Tatooine', 19, 1.72);
+clasificarActividad(padawan1);
 
-clasificarActividad(padawan1); 
-clasificarActividad(padawan2); 
-clasificarActividad(padawan3);
+const padawan2 = crearPadawan('Ahsoka Tano', 'Shili', 14, 1.63);
+clasificarActividad(padawan2);

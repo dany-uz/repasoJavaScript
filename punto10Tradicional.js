@@ -18,43 +18,38 @@ consumidos en la dieta de Grogu.
 
 function crearAlimento(nombre, tipo, nivelEnergia) {
     return {
-        nombre,
-        tipo,
-        nivelEnergia
+        nombre: nombre,
+        tipo: tipo,
+        nivelEnergia: nivelEnergia
     };
 }
 
-const alimentos = [];
-for (let i = 0; i < 300; i++) {
-    const nombre = `Alimento ${i + 1}`;
-    const tipoAleatorio = Math.floor(Math.random() * 3);
-    let tipo;
-    switch (tipoAleatorio) {
-        case 0:
-            tipo = 'vegetal';
-            break;
-        case 1:
-            tipo = 'animal';
-            break;
-        case 2:
-            tipo = 'insecto';
-            break;
-    }
+const alimentos = Array.from({ length: 300 }, function () {
+    const nombre = `Alimento ${Math.floor(Math.random() * 100)}`;
+    const tipo = ['vegetal', 'animal', 'insecto'][Math.floor(Math.random() * 3)];
     const nivelEnergia = Math.floor(Math.random() * 401) + 100;
-    const alimento = crearAlimento(nombre, tipo, nivelEnergia);
-    alimentos.push(alimento);
+    return crearAlimento(nombre, tipo, nivelEnergia);
+});
+
+function filtrarAlimentosVegetales(alimentos) {
+    const alimentosVegetales = alimentos.filter(function (alimento) {
+        return alimento.tipo === 'vegetal';
+    });
+    const alimentosFiltrados = alimentosVegetales.filter(function (alimento) {
+        return alimento.nivelEnergia > 200;
+    });
+    return alimentosFiltrados;
 }
 
-function obtenerAlimentosVegetales(alimentos, callback) {
-    const alimentosVegetales = alimentos.filter(alimento => alimento.tipo === 'vegetal' && alimento.nivelEnergia > 200);
-    setTimeout(() => {
-        callback(alimentosVegetales);
-    }, 5000);
+function sumarNivelEnergiaVegetales(alimentosFiltrados) {
+    const sumaNivelEnergia = alimentosFiltrados.reduce(function (acumulador, alimento) {
+        return acumulador + alimento.nivelEnergia;
+    }, 0);
+    console.log(`La sumatoria de niveles de energía de los alimentos vegetales filtrados es: ${sumaNivelEnergia}`);
 }
 
-function sumarNivelesEnergia(alimentosVegetales) {
-    const sumatoria = alimentosVegetales.reduce((acumulador, alimento) => acumulador + alimento.nivelEnergia, 0);
-    console.log(`La sumatoria de niveles de energía de los alimentos vegetales es: ${sumatoria}`);
-}
-
-obtenerAlimentosVegetales(alimentos, sumarNivelesEnergia);
+setTimeout(function () {
+    const alimentosFiltrados = filtrarAlimentosVegetales(alimentos);
+    console.log(alimentosFiltrados);
+    sumarNivelEnergiaVegetales(alimentosFiltrados);
+}, 5000);

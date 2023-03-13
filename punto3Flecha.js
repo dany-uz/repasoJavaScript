@@ -7,10 +7,14 @@ temperatura máxima y mínima de cada día
 
 */
 
+
 const calcularTemperaturaMedia = (tempMax, tempMin) => {
-    const temperaturaMedia = (tempMax + tempMin) / 2;
-    return temperaturaMedia;
+    return (tempMax + tempMin) / 2;
 };
 
-const tempMediaDia1 = calcularTemperaturaMedia(20, 10);
-const tempMediaDia2 = calcularTemperaturaMedia(25, 15);
+const tempMaxDia1 = 25;
+const tempMinDia1 = 15;
+
+const temperaturaMediaDia1 = calcularTemperaturaMedia(tempMaxDia1, tempMinDia1);
+console.log(`La temperatura media del día 1 es ${temperaturaMediaDia1} grados.`);
+

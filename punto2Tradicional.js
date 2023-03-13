@@ -18,7 +18,7 @@ function obtenerPilotos(datos) {
     const lineas = datos.trim().split('\n');
     lineas.forEach(function(linea) {
       const [clave, piloto] = linea.split(': ');
-      pilotos.push(clave);
+      // pilotos.push(clave); // Solo la clave
       pilotos.push(piloto);
     });
   

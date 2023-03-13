@@ -16,47 +16,62 @@ información general de este
 */
 
 function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function generatePlanet() {
-    const planet = {};
-    planet.nombrePlaneta = `Planeta ${getRandomNumber(1, 100)}`;
-    planet.latitud = getRandomNumber(-90, 90);
-    planet.longitud = getRandomNumber(-180, 180);
-    planet.nivelOxigeno = getRandomNumber(-100, 100);
-    planet.volumenAgua = getRandomNumber(0, 100);
-    return planet;
+function generateRandomPlanets(n) {
+    const planets = [];
+    for (let i = 0; i < n; i++) {
+        const planet = {
+            nombrePlaneta: `Planeta ${i + 1}`,
+            latitud: getRandomNumber(-90, 90),
+            longitud: getRandomNumber(-180, 180),
+            nivelOxigeno: getRandomNumber(-50, 100),
+            volumenAgua: getRandomNumber(0, 1000),
+        };
+        planets.push(planet);
+    }
+    return planets;
 }
 
-function sumarAgua(total, planet) {
-    return total + planet.volumenAgua;
+function sumTotalWater(planets) {
+    const totalWater = planets.reduce((accumulator, planet) => {
+        return accumulator + planet.volumenAgua;
+    }, 0);
+    console.log(`La cantidad total de agua de los planetas es: ${totalWater}`);
 }
 
-function sumarYMultiplicarOxigeno(total, planet) {
-    return total + planet.nivelOxigeno * 100;
+function sumAndMultiplyTotalOxygen(planets) {
+    const totalOxygen = planets.reduce((accumulator, planet) => {
+        return accumulator + planet.nivelOxigeno;
+    }, 0);
+    const result = totalOxygen * 100;
+    console.log(`El total de oxígeno de los planetas multiplicado por 100 es: ${result}`);
 }
 
-function encontrarNivelOxigenoNegativo(planeta) {
-    if (planeta.nivelOxigeno < 0) {
-        console.log(`El planeta ${planeta.nombrePlaneta} tiene un nivel de oxígeno negativo`);
+function findPlanetWithNegativeOxygen(planets) {
+    const planet = planets.find((planet) => planet.nivelOxigeno < 0);
+    if (planet) {
+        console.log(`El planeta ${planet.nombrePlaneta} tiene nivel de oxígeno negativo`);
+        console.log(planet);
+    } else {
+        console.log('Ningún planeta tiene nivel de oxígeno negativo');
     }
 }
 
-function encontrarPlanetaSinAgua(planeta) {
-    if (planeta.volumenAgua === 0) {
-        console.log(`El planeta ${planeta.nombrePlaneta} no tiene agua`);
+function findPlanetWithoutWater(planets) {
+    const planet = planets.find((planet) => planet.volumenAgua === 0);
+    if (planet) {
+        console.log(`El planeta ${planet.nombrePlaneta} no tiene agua`);
+        console.log(planet);
+    } else {
+        console.log('Todos los planetas tienen agua');
     }
 }
 
-const planetas = Array.from({ length: 15 }, generatePlanet);
+const planets = generateRandomPlanets(15);
 
-const totalAgua = planetas.reduce(sumarAgua, 0);
-console.log(`La cantidad total de agua de los 15 planetas es ${totalAgua}`);
-
-const totalOxigeno = planetas.reduce(sumarYMultiplicarOxigeno, 0);
-console.log(`El total de oxígeno de los 15 planetas multiplicado por 100 es ${totalOxigeno}`);
-
-planetas.forEach(encontrarNivelOxigenoNegativo);
-
-planetas.forEach(encontrarPlanetaSinAgua);
+sumTotalWater(planets);
+sumAndMultiplyTotalOxygen(planets);
+findPlanetWithNegativeOxygen(planets);
+findPlanetWithoutWater(planets);

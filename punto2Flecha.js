@@ -18,8 +18,8 @@ const obtenerPilotos = (datos) => {
     const lineas = datos.trim().split('\n');
     lineas.forEach((linea) => {
         const [clave, piloto] = linea.split(': ');
-        // pilotos.push(clave); // Acá guardamos la clave
-        pilotos.push(piloto); // Acá guardamos el piloto
+        // pilotos.push(clave);
+        pilotos.push(piloto);
     });
 
     return pilotos;

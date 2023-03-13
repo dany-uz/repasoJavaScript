@@ -9,16 +9,16 @@ defectuosos con energía negativa fue de 2 sables.
 
 */
 
-const contarSablesDefectuosos = (sables) => {
-    return sables.reduce((contador, sable) => {
-        if (sable < 0) {
-            return contador + 1;
-        } else {
-            return contador;
+function contarSablesNegativos(sables) {
+    let cantidad = 0;
+    for (let i = 0; i < sables.length; i++) {
+        if (sables[i] < 0) {
+            cantidad++;
         }
-    }, 0);
+    }
+    return cantidad;
 }
 
 const sables = [2, 4, -8, 5, -6];
-const cantidadDefectuosos = contarSablesDefectuosos(sables);
-console.log(`La cantidad de sables defectuosos con energía negativa es: ${cantidadDefectuosos}`);
+const cantidadSablesNegativos = contarSablesNegativos(sables);
+console.log(`La cantidad de sables defectuosos con energía negativa es ${cantidadSablesNegativos}.`);

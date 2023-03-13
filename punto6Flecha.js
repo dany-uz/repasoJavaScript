@@ -1,6 +1,6 @@
 /*
 
-PROBLEMA: Para habilitar la guerra de los clones es necesario 
+6. PROBLEMA: Para habilitar la guerra de los clones es necesario 
 clasificar la edad de estos, elabore un programa que permita 
 recibir 20 edades y 20 códigos diferentes generadas 
 aleatoriamente y determine cual de esas edades es la mayor. Si 
@@ -12,28 +12,31 @@ repeticiones
 const clasificarEdades = () => {
     const edades = [];
     const codigos = [];
-    const numEdades = 20;
 
-    for (let i = 0; i < numEdades; i++) {
-        edades.push(Math.floor(Math.random() * 100));
-        codigos.push(Math.floor(Math.random() * 20) + 1);
+    for (let i = 0; i < 20; i++) {
+        const edad = Math.floor(Math.random() * 100) + 1;
+        edades.push(edad);
+
+        const codigo = Math.floor(Math.random() * 20) + 1;
+        codigos.push(codigo);
     }
 
-    let mayorEdad = edades[0];
-    let numRepeticiones = 1;
+    let edadMayor = edades[0];
+    let repeticiones = 0;
 
-    edades.forEach((edad, index) => {
-        if (edad > mayorEdad) {
-            mayorEdad = edad;
-            numRepeticiones = 1;
-        } else if (edad === mayorEdad && index > 0) {
-            numRepeticiones++;
+    for (let i = 1; i < edades.length; i++) {
+        if (edades[i] > edadMayor) {
+            edadMayor = edades[i];
+            repeticiones = 0;
         }
-    });
 
-    console.log(`La edad mayor es ${mayorEdad} y se repite ${numRepeticiones} veces.`);
-    console.log("Edades: " + edades);
-    console.log("Códigos: " + codigos);
+        if (edades[i] === edadMayor) {
+            repeticiones++;
+        }
+    }
+
+    console.log(`Las edades generadas aleatoriamente son: ${edades}`);
+    console.log(`La edad mayor es ${edadMayor} y se repite ${repeticiones} veces.`);
 }
 
 clasificarEdades();
